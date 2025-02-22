@@ -20,6 +20,12 @@ class Card:
     def get_special(self):
         return self.special
     
+    def getvalue(self):
+        return self.value
+    
+    def setvalue(self,value):
+        self.value = value
+    
 
 
 
@@ -31,12 +37,10 @@ def draw_card(deck):
 
 
 def is_odd(num):
-    match num:
-        case 1 | 3 | 5 | 7 | 9:
-            return True
-        case _:
-            return False
-
+    if (num % 2) != 0:
+        return True
+    else:
+        return False
 
 
 
@@ -57,3 +61,4 @@ def create_deck(suits,values,special):
             deck.append(card)
     random.shuffle(deck)
     return deck
+
