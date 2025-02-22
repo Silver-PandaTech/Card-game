@@ -4,14 +4,7 @@
 # I'm just getting some practice in with python
 
 import cards
-import random
 
-def is_odd(num):
-    match num:
-        case 1 | 3 | 5 | 7 | 9:
-            return True
-        case _:
-            return False
 
 def main():
     #this will set the suits we can use->
@@ -22,28 +15,21 @@ def main():
     special = ["Dark", "Light", "None"]
 
     #we need to create the cards now that we have the suits and values and specials
-    deck = []
-    for suit in suits:
-        for value in values:
-            card = cards.Card(suit, value)
-            random_int = random.randint(1,10)
-            if is_odd(random_int) is True:
-                if random_int < 6:
-                    card.set_special(special[1])
-                else:
-                    card.set_special(special[0])
-            else:
-                card.set_special(special[2])
-            
-            deck.append(card)
+    your_deck = cards.create_deck(suits,values,special)
+    my_deck = cards.create_deck(suits,values,special)
 
-    for cards1 in deck:
-        print(cards1.getcard())
-        if cards1.get_special() != "None":
-           print(cards1.get_special())
-        print("_______________________")
-        
-        
+    #for cards1 in deck:
+     #   print(cards1.getcard())
+      #  if cards1.get_special() != "None":
+      #     print(cards1.get_special())
+       # print("_______________________")
+
+    your_card = cards.draw_card(your_deck)
+    my_card = cards.draw_card(my_deck)
+
+
+    print("Your card is " + your_card.getcard() + ", Special attribute: " + your_card.get_special())
+    print("My card is " + my_card.getcard() + ", Special attribute: " + my_card.get_special())
             
 
 main()
